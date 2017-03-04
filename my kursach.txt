@@ -1,0 +1,57 @@
+#include <iostream> 
+#include <string> 
+#include <fstream> 
+#include <stdio.h> 
+using namespace std; 
+int main()
+ 
+{ 
+	setlocale( LC_ALL, "rus" ); 
+	int p; char b[50000]; 
+	char g[20]; int i, m, t; int n; 
+	char str[50000]; 
+
+	cout << "Введите текст" << endl; 
+	ofstream fout("C:\\cppstudio.txt"); 
+	cin.getline(str, 50000); 
+	fout << str; 
+	fout << ' ';
+	fout.close(); 
+	
+	ifstream fin("\C:\\cppstudio.txt"); 
+	fin.getline(b, 50000); 
+	fin.close(); 
+	while (true)
+	{
+		cout << "Введите количество слов, которые будете искать" << endl;
+		cin >> n; 
+		if( cin.good())
+		{
+			cin.ignore(10, '\n');
+			break;
+		}
+		cin.clear();
+			cout << "Неправильный ввод данных " << endl;
+		cin.ignore(10, '\n');
+	}
+	cin.getline(g, 20); 
+	string a = b; 
+	for ( i = 0; i < n; i++ ) 
+	{ 
+		cout << "Введите слово, которое хотите найти" << endl; 
+		cin.getline(g, 20); 
+		p = a.find( g ); 
+		if (p == -1) cout << "Такого слова нет" << endl; 
+
+		else 
+
+		{ 
+			cout << "Найденное слово "; 
+			m = p; 
+			while ( (b[m] != ' ') ) { cout << b[m]; m++; } 
+			cout << endl; 
+			cout << p << endl; 
+		} 
+	} 
+	system("pause"); 
+	return 0; }
